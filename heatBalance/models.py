@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class HeatBalance(models.Model):
+class heatBalance(models.Model):
 	project=models.CharField(max_length=50)
 	sensibleH=models.FloatField()
 	sensibleC=models.FloatField()
