@@ -11,4 +11,4 @@ def model_form_upload(request):
 			return redirect('home')
 	else:
 		form=htmlForm()
-	return render(request,'project/model_form_upload.html',{'form':form})
+	return render(request,'model_form_upload.html',{'form':form})
