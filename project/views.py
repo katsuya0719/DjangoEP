@@ -9,7 +9,7 @@ def model_form_upload(request):
 	#print(request.FILES)
 	if request.method=='POST':
 		form=DocumentForm(request.POST,request.FILES)
-		#print(form.is_valid())
+		print(form)
 		if form.is_valid():
 			newDoc=html(html=request.FILES['html'])
 			print(newDoc)

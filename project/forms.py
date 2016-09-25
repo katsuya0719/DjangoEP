@@ -9,6 +9,7 @@ class htmlForm(forms.ModelForm):
 		fields=('html',)
 """
 class DocumentForm(forms.Form):
+	project=forms.CharField(max_length=50)
 	html=forms.FileField(label='Select a file')
 
 	
