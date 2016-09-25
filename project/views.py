@@ -11,10 +11,11 @@ def model_form_upload(request):
 		form=DocumentForm(request.POST,request.FILES)
 		print(form)
 		if form.is_valid():
-			newDoc=html(html=request.FILES['html'])
+			newDoc=form.save()
+			#newDoc=html(html=request.FILES['html'])
 			print(newDoc)
 			newDoc.save()
-
+			
 			#return HttpResponseRedirect('heat')
 			return HttpResponse("success")
 			#return redirect('home')
