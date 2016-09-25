@@ -9,6 +9,6 @@ class htmlForm(forms.ModelForm):
 		fields=('html',)
 """
 class DocumentForm(forms.Form):
-	docfile=forms.FileField(label='Select a file')
+	html=forms.FileField(label='Select a file')
 
 	

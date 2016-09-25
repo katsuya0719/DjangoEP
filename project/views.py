@@ -11,7 +11,7 @@ def model_form_upload(request):
 		form=DocumentForm(request.POST,request.FILES)
 		#print(form.is_valid())
 		if form.is_valid():
-			newDoc=html(docfile=request.FILES['docfile'])
+			newDoc=html(html=request.FILES['html'])
 			print(newDoc)
 			newDoc.save()
 
