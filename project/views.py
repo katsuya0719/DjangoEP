@@ -7,9 +7,12 @@ from django.views.generic.list import ListView
 
 # Create your views here.
 class ListView(ListView):
-	model=html
+	#model=html
+	queryset=html.objects.all()
+	print(queryset)
+	template_name='project_list.html'
 
-	
+
 def model_form_upload(request):
 	#print(request.FILES)
 	if request.method=='POST':
