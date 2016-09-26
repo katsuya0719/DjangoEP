@@ -1,0 +1,8 @@
+<h1>Articles</h1>
+<ul>
+{% for project in object_list %}
+    <li>{{ project.project }} - {{ project.html }}</li>
+{% empty %}
+    <li>No projects yet.</li>
+{% endfor %}
+</ul>

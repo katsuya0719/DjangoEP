@@ -2,9 +2,14 @@ from django.shortcuts import render
 from project.models import html
 from project.forms import DocumentForm
 from django.http import HttpResponseRedirect,HttpResponse
+from django.views.generic.list import ListView
 
 
 # Create your views here.
+class ListView(ListView):
+	model=html
+
+	
 def model_form_upload(request):
 	#print(request.FILES)
 	if request.method=='POST':
