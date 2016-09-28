@@ -16,9 +16,17 @@ from mpl_toolkits.mplot3d import Axes3D
 from matplotlib import cm
 
 class ProcessHtml():
-    def __init__(self,folder):
-        self.folder=folder
-        self.setfolder()
+    def __init__(self,folder=None,file=None):
+        if file==None:
+            self.folder=folder
+            self.setfolder()
+        else:
+            self.file=file
+            self.setfile()
+
+    def setfile(self):
+        html= open(self.file,'r').read()
+        self.htables=readhtml.titletable(html)
 
     def setfolder(self):
         """
@@ -157,6 +165,7 @@ class ProcessHtml():
 
 
 if __name__ == '__main__':
+    """
     root="D:\\Reference\\Programming\\Python\\EnergyPlus\\PostProcessing\\PostprocessEP\\data\\"
     loc="Nantou\\Design\\151221_ReviseWWR\\"
     #loc="2ndPA\\T3\\"
@@ -167,6 +176,7 @@ if __name__ == '__main__':
     dest="D:\\Reference\\Programming\\Javascript\\EnergyPlus\\static\\csv\\"
     keyword=["Air Heating","Heat Addition"]
     #export=["Energy","Zone","Opaque","Glass"]
+    """
 
     case=ProcessHtml(folder)
     case.extract_html()
