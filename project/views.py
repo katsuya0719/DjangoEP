@@ -4,6 +4,9 @@ from project.forms import DocumentForm
 from django.http import HttpResponseRedirect,HttpResponse
 from django.views.generic.list import ListView
 from libs.EPprocessing.main import ProcessHtml
+from EnergyPlus import settings 
+from django.core.files import File
+import os
 
 
 # Create your views here.
@@ -24,12 +27,23 @@ def model_form_upload(request):
 			newDoc.save()
 			
 			#process html
+			"""
 			html=request.FILES['html']
+			f=open(html,'r')
+			new=File(f)
+			print(new)
 			if html.multiple_chunks()==False:
 				file=html.read()
-			print(file)
-			print(html.name)
-			process_html(file)
+			#print(file)
+			#print(html.name)
+			#print(html.chunks())
+			"""
+			queryset=html.objects.all().last()
+			print(queryset.html.path)
+			print(settings.MEDIA_ROOT)
+			strHtml=os.path.join(settings.MEDIA_ROOT,queryset.html.path)
+			process_html(strHtml)
+			
 			#return HttpResponseRedirect('heat')
 			return HttpResponse("success")
 			#return redirect('home')

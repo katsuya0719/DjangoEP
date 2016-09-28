@@ -74,8 +74,8 @@ class ProcessHtml():
         k=["EUI","Area","Energy","Unmet","WWR","WWRcon","Zone","ElUIcon","ElUI","Opaque","Glass","Light","Fan","Pump","HW","Cooling","Heating","UnmetDetail","OAaverage","OAmin","HVAC","HeatBalance"]
         self.db=dict(zip(k,value))
 
-        for i,html in enumerate(htables):
-           print (i,html[0])
+        #for i,html in enumerate(htables):
+        #   print (i,html[0])
 
     def convert_df(self,html):
         col=html[0]
@@ -172,11 +172,11 @@ if __name__ == '__main__':
     #loc="KingsRoad\\"
     folder=root+loc
     strFile="output.csv"
-
+    """
     dest="D:\\Reference\\Programming\\Javascript\\EnergyPlus\\static\\csv\\"
     keyword=["Air Heating","Heat Addition"]
     #export=["Energy","Zone","Opaque","Glass"]
-    """
+    
 
     case=ProcessHtml(folder)
     case.extract_html()
