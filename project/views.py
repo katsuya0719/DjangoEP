@@ -57,7 +57,7 @@ def model_form_upload(request):
 def process_html(html):
 	case=ProcessHtml(file=html)
 	case.extract_html()
-	print(case.db)
+	#print(case.db)
 	#print(documents)
 	#return HttpResponse("success")
 	#return render(request,'list.html',{'documents':documents, 'form':form})
