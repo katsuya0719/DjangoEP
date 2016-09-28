@@ -4,7 +4,7 @@ from project.forms import DocumentForm
 from django.http import HttpResponseRedirect,HttpResponse
 from django.views.generic.list import ListView
 from libs.EPprocessing.main import ProcessHtml
-from EnergyPlus import settings 
+#from EnergyPlus import settings 
 from django.core.files import File
 import os
 
@@ -39,10 +39,12 @@ def model_form_upload(request):
 			#print(html.chunks())
 			"""
 			queryset=html.objects.all().last()
-			print(queryset.html.path)
-			print(settings.MEDIA_ROOT)
-			strHtml=os.path.join(settings.MEDIA_ROOT,queryset.html.path)
-			process_html(strHtml)
+			#head,tail=os.path.split(queryset)
+			print(os.path.dirname(queryset.html.path))
+			dest=os.path.dirname(queryset.html.path)
+			#print(settings.MEDIA_ROOT)
+			#strHtml=os.path.join(settings.MEDIA_ROOT,queryset.html.path)
+			process_html(queryset.html.path,dest)
 			
 			#return HttpResponseRedirect('heat')
 			return HttpResponse("success")
@@ -54,9 +56,10 @@ def model_form_upload(request):
 	return render(request,'model_form_upload.html',{'form':form})
 	documents=html.objects.all()
 
-def process_html(html):
+def process_html(html,dest):
 	case=ProcessHtml(file=html)
 	case.extract_html()
+	case.export_all(dest)
 	#print(case.db)
 	#print(documents)
 	#return HttpResponse("success")

@@ -161,6 +161,16 @@ class ProcessHtml():
         result=dict(zip(p_key,c_dict))
         return result
 
+    def export_all(self,dest):
+        if os.path.exists(dest):
+            pass
+        else:
+            os.makedirs(dest)
+
+        #each_room.to_csv(dest+loc+'heatgain.csv', encoding='utf-8',index=False,header=False)
+
+        for k,v in self.db.items():
+            v.to_csv(dest+"\\"+k+'.csv', encoding='utf-8',index=False,header=False)
     #def convert_set(self,df,key,value):
 
 
