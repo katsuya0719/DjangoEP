@@ -3,6 +3,7 @@ from project.models import html
 from project.forms import DocumentForm
 from django.http import HttpResponseRedirect,HttpResponse
 from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
 from libs.EPprocessing.main import ProcessHtml
 #from EnergyPlus import settings 
 from django.core.files import File
@@ -16,6 +17,9 @@ class ListView(ListView):
 	#print(queryset)
 	template_name='project_list.html'
 
+class DetailView(DetailView):
+	model=html
+	template_name='project_detail.html'
 
 def model_form_upload(request):
 	#print(request.FILES)
@@ -50,3 +54,4 @@ def process_html(html,dest):
 	#print(documents)
 	#return HttpResponse("success")
 	#return render(request,'list.html',{'documents':documents, 'form':form})
+
