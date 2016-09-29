@@ -33,8 +33,8 @@ def model_form_upload(request):
 			queryset=html.objects.all().last()
 			dest=os.path.dirname(queryset.html.path)
 
-			process_html(queryset.html.path,dest)
-			
+			area=process_html(queryset.html.path,dest)
+			print(type(area))
 			#return HttpResponseRedirect('heat')
 			return HttpResponse("success")
 			#return redirect('home')
@@ -45,11 +45,14 @@ def model_form_upload(request):
 	return render(request,'model_form_upload.html',{'form':form})
 	documents=html.objects.all()
 
+#def register_csv():
+
 def process_html(html,dest):
 	case=ProcessHtml(file=html)
 	db=case.extract_html()
 	print (db["Area"])
 	case.export_all(dest)
+	return db["Area"]
 	#print(case.db)
 	#print(documents)
 	#return HttpResponse("success")
