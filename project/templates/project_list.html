@@ -14,7 +14,7 @@
 <tbody>
 {% for project in object_list %}
 	<tr>
-		<td>{{project.project}}</td>
+		<td><a href="{% url 'detail' project.pk %}">{{project.project}}</a></td>
 		<td>{{project.html}}</td>
 	</tr>
 </tbody>
