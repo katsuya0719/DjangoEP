@@ -25,6 +25,6 @@ router.register(r'heat',views.heatBalViewSet)
 urlpatterns = [
 	url(r'^', include(router.urls)),
     url(r'^admin/', admin.site.urls),
-    url(r'^project/',ListView.as_view()),
-    url(r'^upload/',model_form_upload),
+    url(r'^project/',ListView.as_view(),name='project'),
+    url(r'^upload/',model_form_upload,name='upload'),
 ]

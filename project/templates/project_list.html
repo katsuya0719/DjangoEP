@@ -1,8 +1,25 @@
-<h1>Articles</h1>
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Project</h1>
 <ul>
+
+<table class="table">
+<thead>
+	<tr>
+		<th>Project</th>
+		<th>link</th>
+	</tr>
+</thead>
+<tbody>
 {% for project in object_list %}
-    <li>{{ project.project }} - {{ project.html }}</li>
+	<tr>
+		<td>{{project.project}}</td>
+		<td>{{project.html}}</td>
+	</tr>
+</tbody>
 {% empty %}
     <li>No projects yet.</li>
 {% endfor %}
 </ul>
+{% endblock %}

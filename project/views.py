@@ -7,7 +7,7 @@ from libs.EPprocessing.main import ProcessHtml
 #from EnergyPlus import settings 
 from django.core.files import File
 import os
-
+import pandas
 
 # Create your views here.
 class ListView(ListView):
@@ -26,24 +26,9 @@ def model_form_upload(request):
 			#newDoc=html(html=request.FILES['html'])
 			newDoc.save()
 			
-			#process html
-			"""
-			html=request.FILES['html']
-			f=open(html,'r')
-			new=File(f)
-			print(new)
-			if html.multiple_chunks()==False:
-				file=html.read()
-			#print(file)
-			#print(html.name)
-			#print(html.chunks())
-			"""
 			queryset=html.objects.all().last()
-			#head,tail=os.path.split(queryset)
-			print(os.path.dirname(queryset.html.path))
 			dest=os.path.dirname(queryset.html.path)
-			#print(settings.MEDIA_ROOT)
-			#strHtml=os.path.join(settings.MEDIA_ROOT,queryset.html.path)
+
 			process_html(queryset.html.path,dest)
 			
 			#return HttpResponseRedirect('heat')
@@ -58,7 +43,8 @@ def model_form_upload(request):
 
 def process_html(html,dest):
 	case=ProcessHtml(file=html)
-	case.extract_html()
+	db=case.extract_html()
+	print (db["Area"])
 	case.export_all(dest)
 	#print(case.db)
 	#print(documents)

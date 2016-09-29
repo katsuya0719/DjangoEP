@@ -73,7 +73,8 @@ class ProcessHtml():
         value=[EUI,Area,Energy,Unmet,WWR,WWRcon,ZoneSummary,ElUIcon,ElUI,Opaque,Glazing,InLight,Fan,Pump,HW,Cooling,Heating,UnmetDetail,OAaverage,OAmin,HVAC,self.HeatBalance]
         k=["EUI","Area","Energy","Unmet","WWR","WWRcon","Zone","ElUIcon","ElUI","Opaque","Glass","Light","Fan","Pump","HW","Cooling","Heating","UnmetDetail","OAaverage","OAmin","HVAC","HeatBalance"]
         self.db=dict(zip(k,value))
-        print (Area)
+        
+        return self.db
         #for i,html in enumerate(htables):
         #   print (i,html[0])
 
@@ -171,8 +172,6 @@ class ProcessHtml():
 
         for k,v in self.db.items():
             v.to_csv(dest+"\\"+k+'.csv', encoding='utf-8',index=False,header=False)
-    #def convert_set(self,df,key,value):
-
 
 if __name__ == '__main__':
     """
