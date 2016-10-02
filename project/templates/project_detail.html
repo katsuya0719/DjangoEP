@@ -9,11 +9,13 @@
 			<tr>
 				<th>Project</th>
 				<th>link</th>
+				<th>strpath</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr> 
 				<td>{{object.project}}</td>
+				<td>{{object.html}}</td>
 				<td>{{strpath}}</td>
 			</tr>
 		</tbody>
@@ -27,6 +29,8 @@
 <script src="{% static 'vendor/js/d3.js' %}"></script>
 <script src="{% static 'js/pie2.js' %}"></script>
 <script src="{% static 'vendor/js/jquery-2.2.3.min.js' %}"></script>
+<script src="{% static 'html/nant3/Energy.csv' %}"></script>
+
 
 <script type="text/javascript">
 	/*

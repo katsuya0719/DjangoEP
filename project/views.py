@@ -25,9 +25,14 @@ class DetailView(DetailView):
 
 	def get_context_data(self,**kwargs):
 		data=super().get_context_data(**kwargs)
+		print(len(settings.MEDIA_ROOT))
 		#print(os.path.dirname(data["object"].html.path))
-		data["strpath"]=str(os.path.join((os.path.dirname(data["object"].html.path)),"Energy.csv"))
-		print(type(data["strpath"]))
+		#data["abspath"]=str(os.path.join((os.path.dirname(data["object"].html.path)),"Energy.csv"))
+		abspath=str(os.path.join((os.path.dirname(data["object"].html.path)),"Energy.csv"))
+		#data["strpath"]=abspath.translate(None,settings.MEDIA_ROOT)
+		strpath=abspath[len(settings.MEDIA_ROOT):].replace("\\","/")
+		data["strpath"]="../../static"+strpath
+		print(data["strpath"])
 		return data
 
 def model_form_upload(request):
