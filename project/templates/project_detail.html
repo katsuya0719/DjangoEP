@@ -14,7 +14,7 @@
 		<tbody>
 			<tr> 
 				<td>{{object.project}}</td>
-				<td>{{object.html.path}}</td>
+				<td>{{strpath}}</td>
 			</tr>
 		</tbody>
 		</table>
@@ -26,13 +26,16 @@
 </div>
 <script src="{% static 'vendor/js/d3.js' %}"></script>
 <script src="{% static 'js/pie2.js' %}"></script>
+<script src="{% static 'vendor/js/jquery-2.2.3.min.js' %}"></script>
 
 <script type="text/javascript">
-    $.get({{object.html}}, function(data) 
+	/*
+    $.get({{strpath}}, function(data) 
     {
-        $('.result').html(data);
-        scatter(data); // Here's the call to the javascript function
+        loadPie(data); // Here's the call to the javascript function
     });
+    */
+    loadPie("{{strpath}}");
 </script>
 
 {% endblock %}

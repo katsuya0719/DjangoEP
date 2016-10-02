@@ -23,6 +23,13 @@ class DetailView(DetailView):
 	model=html
 	template_name='project_detail.html'
 
+	def get_context_data(self,**kwargs):
+		data=super().get_context_data(**kwargs)
+		#print(os.path.dirname(data["object"].html.path))
+		data["strpath"]=str(os.path.join((os.path.dirname(data["object"].html.path)),"Energy.csv"))
+		print(type(data["strpath"]))
+		return data
+
 def model_form_upload(request):
 	#print(request.FILES)
 	if request.method=='POST':

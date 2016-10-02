@@ -223,7 +223,9 @@ function pieChart() {
                 return 1 * reverse;
         });
     }
-    d3.csv("{{file}}",function(data){
+
+    function loadPie(csv){
+        d3.csv(csv,function(data){
         //console.log(data);
         data.forEach(function(d){
             if(d.Subcategory=="General"){
@@ -257,4 +259,5 @@ function pieChart() {
             .data(data);
 
         chart.render("#pie");
-    })
+    }
+)};
