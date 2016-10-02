@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from project.models import html
+from project.models import html,basic
 from project.forms import DocumentForm
 from django.http import HttpResponseRedirect,HttpResponse
 from django.views.generic.list import ListView
@@ -9,6 +9,8 @@ from libs.EPprocessing.main import ProcessHtml
 from django.core.files import File
 import os
 import pandas
+import dj_database_url
+from django.conf import settings
 
 # Create your views here.
 class ListView(ListView):
@@ -34,7 +36,8 @@ def model_form_upload(request):
 			dest=os.path.dirname(queryset.html.path)
 
 			area=process_html(queryset.html.path,dest)
-			print(type(area))
+			register_df(area)
+
 			#return HttpResponseRedirect('heat')
 			return HttpResponse("success")
 			#return redirect('home')
@@ -44,13 +47,27 @@ def model_form_upload(request):
 	#print(form)
 	return render(request,'model_form_upload.html',{'form':form})
 	documents=html.objects.all()
-
-#def register_csv():
+"""
+def register_df(df):
+	
+	database_name=settings.DATABASES['default']['NAME']
+	database_url='sqlite://{database_name}'.format(
+		database_name=database_name,
+		)
+	engine=create_engine(database_url,echo=False)
+	df.to_sql(basic,con=engine)
+"""
+def register_df(df):
+	print(basic._meta.get_fields())
+	entries=[]
+	for e in df.iloc[1:,1:].T.to_dict().values():
+		print(basic.field)
+		entries.append(basic(**e))
 
 def process_html(html,dest):
 	case=ProcessHtml(file=html)
 	db=case.extract_html()
-	print (db["Area"])
+	print (db["Unmet"])
 	case.export_all(dest)
 	return db["Area"]
 	#print(case.db)
