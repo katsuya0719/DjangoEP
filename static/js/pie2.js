@@ -223,7 +223,7 @@ function pieChart() {
                 return 1 * reverse;
         });
     }
-    d3.csv("static/csv/Nantou/energy.csv",function(data){
+    d3.csv("{{file}}",function(data){
         //console.log(data);
         data.forEach(function(d){
             if(d.Subcategory=="General"){

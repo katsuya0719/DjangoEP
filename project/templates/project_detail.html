@@ -1,20 +1,38 @@
 {% extends "base.html" %}
 {% block content %}
-
+{% load staticfiles %}
 <h1>{{object.project}}</h1>
+<div class="container">
+	<div class="row">
+		<table class="table">
+		<thead>
+			<tr>
+				<th>Project</th>
+				<th>link</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr> 
+				<td>{{object.project}}</td>
+				<td>{{object.html.path}}</td>
+			</tr>
+		</tbody>
+		</table>
+	</div>
+    <div class="row">
+        <div class="col-md-6" id="pie"></div>
+        <div class="col-md-6" id="bar"></div>
+    </div>
+</div>
+<script src="{% static 'vendor/js/d3.js' %}"></script>
+<script src="{% static 'js/pie2.js' %}"></script>
 
-<table class="table">
-<thead>
-	<tr>
-		<th>Project</th>
-		<th>link</th>
-	</tr>
-</thead>
-<tbody>
-	<tr>
-		<td>{{object.project}}</td>
-		<td>{{object.html}}</td>
-	</tr>
-</tbody>
+<script type="text/javascript">
+    $.get({{object.html}}, function(data) 
+    {
+        $('.result').html(data);
+        scatter(data); // Here's the call to the javascript function
+    });
+</script>
 
 {% endblock %}
