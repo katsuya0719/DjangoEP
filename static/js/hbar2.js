@@ -115,11 +115,11 @@ function ObjArraySort(ary, key, order) {
             return 1 * reverse;
     });
 }
-    
+/*
 hbarChart("static/csv/Nantou/Zone.csv","area",'#hbar');
 hbarChart("static/csv/Nantou/Zone.csv","Light",'#hbar1');
 hbarChart("static/csv/Nantou/Zone.csv","People",'#hbar2');
 hbarChart("static/csv/Nantou/Zone.csv","Plug",'#hbar3');
 hbarChart("static/csv/Nantou/Zone.csv","WWR",'#hbar4');
 hbarChart("static/csv/Nantou/Zone.csv","Glass",'#hbar5');
-
+*/

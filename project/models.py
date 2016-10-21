@@ -8,6 +8,9 @@ class html(models.Model):
 	project=models.CharField(max_length=50,blank=True)
 	html=models.FileField(upload_to=dir_path)
 	uploaded_at=models.DateTimeField(auto_now_add=True)
+	
+	def __str__(self):
+		return self.project
 
 class basic(models.Model):
 	html=models.OneToOneField(html,primary_key=True)

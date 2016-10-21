@@ -9,31 +9,42 @@ from libs.EPprocessing.main import ProcessHtml
 from django.core.files import File
 import os
 import pandas
-import dj_database_url
 from django.conf import settings
+from django.core.urlresolvers import reverse
 
 # Create your views here.
 class ListView(ListView):
-	#model=html
-	queryset=html.objects.all()
+	model=html
+	#queryset=html.objects.all()
 	#print(queryset)
 	template_name='project_list.html'
 
 class DetailView(DetailView):
 	model=html
 	template_name='project_detail.html'
-
+	
+	def makepath(self,data,strcsv):
+		abspath=str(os.path.join((os.path.dirname(data["object"].html.path)),strcsv))
+		strpath=abspath[len(settings.MEDIA_ROOT):].replace("\\","/")
+		return strpath
+		#data[strcsv[:-4]+"path"]="../../static"+strpath
+		
 	def get_context_data(self,**kwargs):
 		data=super().get_context_data(**kwargs)
 		print(len(settings.MEDIA_ROOT))
-		#print(os.path.dirname(data["object"].html.path))
-		#data["abspath"]=str(os.path.join((os.path.dirname(data["object"].html.path)),"Energy.csv"))
+		"""
 		abspath=str(os.path.join((os.path.dirname(data["object"].html.path)),"Energy.csv"))
-		#data["strpath"]=abspath.translate(None,settings.MEDIA_ROOT)
 		strpath=abspath[len(settings.MEDIA_ROOT):].replace("\\","/")
 		data["strpath"]="../../static"+strpath
-		print(data["strpath"])
+		"""
+		strpath=self.makepath(data,"Energy.csv")
+		data["energy"]="../../static"+strpath
+		strpath1=self.makepath(data,"Zone.csv")
+		data["zone"]="../../static"+strpath1
+		print(data)
 		return data
+		
+	
 
 def model_form_upload(request):
 	#print(request.FILES)
@@ -48,10 +59,12 @@ def model_form_upload(request):
 			dest=os.path.dirname(queryset.html.path)
 
 			area=process_html(queryset.html.path,dest)
-			register_df(area)
+			#register_df(area)
 
 			#return HttpResponseRedirect('heat')
-			return HttpResponse("success")
+			#return HttpResponse("success")
+			#return HttpResponseRedirect(reverse('detail',kwargs={'pk':pk}))
+			return HttpResponseRedirect(reverse('project'))
 			#return redirect('home')
 	else:
 		form=DocumentForm()
@@ -70,10 +83,10 @@ def register_df(df):
 	df.to_sql(basic,con=engine)
 """
 def register_df(df):
-	print(basic._meta.get_fields())
+	#print(basic._meta.get_fields())
 	entries=[]
 	for e in df.iloc[1:,1:].T.to_dict().values():
-		print(basic.field)
+		#print(basic.field)
 		entries.append(basic(**e))
 
 def process_html(html,dest):

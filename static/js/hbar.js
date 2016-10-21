@@ -1,124 +1,141 @@
-var categories= ['','Accessories', 'Audiophile', 'Camera & Photo', 'Cell Phones', 'Computers','eBook Readers','Gadgets','GPS & Navigation','Home Audio','Office Electronics','Portable Audio','Portable Video','Security & Surveillance','Service','Television & Video','Car & Vehicle'];
+function hbarChart(csv,para,id){
+    d3.csv(csv, function(d,i) {
+        var arr = Object.keys(d).map(function (key) {return d[key]});
+        d.room = arr[0];
+        d.area = +d["Area [m2]"];
+        d.Light = +d["Lighting [W/m2]"];
+        d.People = +d["People [m2 per person]"];
+        d.Plug = +d["Plug and Process [W/m2]"];
+        d.Glass = +d["Window Glass Area [m2]"];
+        d.Wall = +d["Gross Wall Area [m2]"];
+        if (d.Wall==0){
+            d.WWR=0
+        }else{
+            d.WWR=d.Glass/(d.Glass+d.Wall)*100;
+        };
+        return d;
+      }, function(error, data) {
+        if (error) throw error;
+        var len=Object.keys(data).length;
+        var data1=[];
+        data.forEach(function(d,i){
+          if(i<len-5){
+            data1.push(d);
+          }
+        });
+    //console.log(data1);
 
-var dollars = [213,209,190,179,156,209,190,179,213,209,190,179,156,209,190,190];
+    ObjArraySort(data1,para,"DESC")
 
-var colors = ['#0000b4','#0082ca','#0094ff','#0d4bcf','#0066AE','#074285','#00187B','#285964','#405F83','#416545','#4D7069','#6E9985','#7EBC89','#0283AF','#79BCBF','#99C19E'];
+    var axisMargin = 20,
+            margin = 10,
+            valueMargin = 4,
+	    	    
+            width=350,
+	    barHeight=10,
+	    barPadding=2,
+	    height=(barHeight+barPadding)*data1.length+axisMargin+2*margin,
+	    /*
+            height=500,
+            barHeight = (height-axisMargin-margin*2)* 0.7/data1.length,
+            barPadding = (height-axisMargin-margin*2)*0.3/data1.length,
+	    */
+            data, bar, svg, scale, xAxis, labelWidth = 0;
 
-var grid = d3.range(25).map(function(i){
-	return {'x1':0,'y1':0,'x2':0,'y2':480};
-});
+    max = d3.max(data1, function(d) { return d[para]; });
 
-var tickVals = grid.map(function(d,i){
-	if(i>0){ return i*10; }
-	else if(i===0){ return "100";}
-});
+    svg = d3.select(id)
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
 
-var xscale = d3.scale.linear()
-				.domain([10,250])
-				.range([0,722]);
+    console.log(id,svg);
+    bar = svg.selectAll("g")
+            .data(data1)
+            .enter()
+            .append("g");
 
-var yscale = d3.scale.linear()
-				//.domain([0,room.length])
-				.range([0,480]);
+    bar.attr("class", "bar")
+            .attr("cx",0)
+            .attr("transform", function(d, i) {
+                return "translate(" + margin + "," + (i * (barHeight + barPadding) + barPadding) + ")";
+            });
 
-var colorScale = d3.scale.quantize()
-				//.domain([0,room.length])
-				.range(colors);
+    bar.append("text")
+            .attr("class", "label")
+            .attr("y", barHeight / 2)
+            .attr("dy", ".35em") //vertical align middle
+            .text(function(d){
+                return d.room;
+            }).each(function() {
+        labelWidth = Math.ceil(Math.max(labelWidth, this.getBBox().width));
+    });
 
-var canvas = d3.select('#hbar')
-				.append('svg')
-				.attr({'width':900,'height':550});
+    scale = d3.scale.linear()
+            .domain([0, max])
+            .range([0, width - margin*2 - labelWidth]);
 
-function hbarChart(csv){
-	d3.csv(csv,function(d,i){
-		var arr = Object.keys(d).map(function (key) {return d[key]});
-	    d.room = arr[0];
-	    d.area = +d["Area [m2]"];
-	    d.Light = +d["Lighting [W/m2]"];
-	    d.People = +d["People [m2 per person]"];
-	    d.Plug = +d["Plug and Process [W/m2]"];
-	    return d;
-	  }, function(error, data) {
-	  	//console.log(data)
-	    if (error) throw error;
-	    var len=Object.keys(data).length;
-	    var data1=[];
-	    data.forEach(function(d,i){
-	      if(i<len-5){
-	        data1.push(d);
-	      }
-	    });	   
-	console.log(data1);
-	yscale.domain(data1.map(function(d) { return d.room; }));
-	colorScale.domain(data1.map(function(d) { return d.room; }));
-    //yscale.domain([0, d3.max(data1, function(d) { return d.area; })]);
+    xAxis = d3.svg.axis()
+            .scale(scale)
+            .tickSize(-height + 2*margin + axisMargin)
+            .orient("bottom");
 
-	var	xAxis = d3.svg.axis();
-			xAxis
-			.orient('bottom')
-			.scale(xscale)
-			.tickValues(tickVals);
+    bar.append("rect")
+            .attr("transform", "translate("+labelWidth+", 0)")
+            .attr("height", barHeight)
+            .attr("width", function(d){
+                return scale(d[para]);
+            });
 
-	var	yAxis = d3.svg.axis();
-			yAxis
-			.orient('left')
-			.scale(yscale)
-			.tickSize(2)
-			.tickFormat(function(d,i){ return categories[i]; })
-			.tickValues(d3.range(17));
+    bar.append("text")
+            .attr("class", "value")
+            .attr("y", barHeight / 2)
+            .attr("dx", -valueMargin + labelWidth) //margin right
+            .attr("dy", ".35em") //vertical align middle
+            .attr("text-anchor", "end")
+            .text(function(d){
+                return (Math.round(d[para]));
+            })
+            .attr("x", function(d){
+                var width = this.getBBox().width;
+                return Math.max(width + valueMargin, scale(d[para]));
+            });
 
-	var y_xis = canvas.append('g')
-						  .attr("transform", "translate(150,0)")
-						  .attr('id','yaxis')
-						  //.call(yAxis);	
-						  .call(yscale);	
-
-	var x_xis = canvas.append('g')
-						  .attr("transform", "translate(150,480)")
-						  .attr('id','xaxis')
-						  .call(xAxis);
-
-	var chart = canvas.append('g')
-							.attr("transform", "translate(150,0)")
-							.attr('id','bars')
-							.selectAll('rect')
-							.data(data1)
-							.enter()
-							.append('rect')
-							.attr('height',19)
-							.attr({'x':0,'y':function(d,i){ return yscale(i)+19; }})
-							.style('fill',function(d,i){ return colorScale(i); })
-							.attr('width',function(d){ return 0; });
-	});
+    svg.insert("g",":first-child")
+            .attr("class", "axisHorizontal")
+            .attr("transform", "translate(" + (margin + labelWidth) + ","+ (height - axisMargin - margin)+")")
+            .call(xAxis);
+    });
 };
+
+function ObjArraySort(ary, key, order) {
+    var reverse = 1;
+    if(order && order.toLowerCase() == "desc") 
+        reverse = -1;
+    ary.sort(function(a, b) {
+        if(a[key] < b[key])
+            return -1 * reverse;
+        else if(a[key] == b[key])
+            return 0;
+        else
+            return 1 * reverse;
+    });
+}
+
+function renderAll(csv){
+	hbarChart(csv,"area",'#hbar');
+	hbarChart(csv,"Light",'#hbar1');
+	hbarChart(csv,"People",'#hbar2');
+	hbarChart(csv,"Plug",'#hbar3');
+	hbarChart(csv,"WWR",'#hbar4');
+	hbarChart(csv,"Glass",'#hbar5');
+};
+//renderAll("static/csv/Nantou/Design/151221_ReviseWWR/Zone.csv")
 /*
-var grids = canvas.append('g')
-				  .attr('id','grid')
-				  .attr('transform','translate(150,10)')
-				  .selectAll('line')
-				  .data(grid)
-				  .enter()
-				  .append('line')
-				  .attr({'x1':function(d,i){ return i*30; },
-						 'y1':function(d){ return d.y1; },
-						 'x2':function(d,i){ return i*30; },
-						 'y2':function(d){ return d.y2; },
-					})
-				  .style({'stroke':'#adadad','stroke-width':'1px'});
-
-		var transit = d3.select("svg").selectAll("rect")
-						    .data(dollars)
-						    .transition()
-						    .duration(1000) 
-						    .attr("width", function(d) {return xscale(d); });
-
-		var transitext = d3.select('#bars')
-							.selectAll('text')
-							.data(dollars)
-							.enter()
-							.append('text')
-							.attr({'x':function(d) {return xscale(d)-200; },'y':function(d,i){ return yscale(i)+35; }})
-							.text(function(d){ return d+"$"; }).style({'fill':'#fff','font-size':'14px'});
+hbarChart("static/csv/Nantou/Design/151221_ReviseWWR/Zone.csv","area",'#hbar');
+hbarChart("static/csv/Nantou/Design/151221_ReviseWWR/Zone.csv","Light",'#hbar1');
+hbarChart("static/csv/Nantou/Design/151221_ReviseWWR/Zone.csv","People",'#hbar2');
+hbarChart("static/csv/Nantou/Design/151221_ReviseWWR/Zone.csv","Plug",'#hbar3');
+hbarChart("static/csv/Nantou/Design/151221_ReviseWWR/Zone.csv","WWR",'#hbar4');
+hbarChart("static/csv/Nantou/Design/151221_ReviseWWR/Zone.csv","Glass",'#hbar5');
 */
-
-hbarChart("static/csv/Nantou/Zone.csv")

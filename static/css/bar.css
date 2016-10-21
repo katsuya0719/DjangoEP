@@ -46,6 +46,8 @@
     }
 
     .bar {
-        fill: steelblue;
-        fill-opacity: .9;
-    }
+	  fill: Aqua;
+	}
+	.bar:hover {
+	  fill: Orange;
+	}
