@@ -1,5 +1,4 @@
 alabaster==0.7.8
-anaconda-client==1.4.0
 anaconda-navigator==1.2.1
 -e git+https://github.com/kevinastone/django-api-rest-and-angular.git@38948520f2f8eeb9a272079cb432caa753267674#egg=API_Example
 arcgis==0.1
