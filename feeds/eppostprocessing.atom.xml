@@ -1,5 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Help page - EPpostprocessing</title><link href="https://katsuya0719.github.io/DjangoEP/" rel="alternate"></link><link href="https://katsuya0719.github.io/DjangoEP/feeds/eppostprocessing.atom.xml" rel="self"></link><id>https://katsuya0719.github.io/DjangoEP/</id><updated>2014-01-04T22:00:00+08:00</updated><entry><title>How to use EP postprocessing tool</title><link href="https://katsuya0719.github.io/DjangoEP/first-post.html" rel="alternate"></link><published>2014-01-04T22:00:00+08:00</published><updated>2014-01-04T22:00:00+08:00</updated><author><name>obakatsu</name></author><id>tag:katsuya0719.github.io,2014-01-04:/DjangoEP/first-post.html</id><summary type="html">&lt;p&gt;This page is showing how to use EPpostprocessing&lt;/p&gt;</summary><content type="html">&lt;h1&gt;How to use EP postprocessing&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Help page - EPpostprocessing</title><link href="https://katsuya0719.github.io/DjangoEP/" rel="alternate"></link><link href="https://katsuya0719.github.io/DjangoEP/feeds/eppostprocessing.atom.xml" rel="self"></link><id>https://katsuya0719.github.io/DjangoEP/</id><updated>2017-01-30T11:00:00+08:00</updated><entry><title>Future plan of EP postprocessing tool as of 2017</title><link href="https://katsuya0719.github.io/DjangoEP/17013011.html" rel="alternate"></link><published>2017-01-30T11:00:00+08:00</published><updated>2017-01-30T11:00:00+08:00</updated><author><name>obakatsu</name></author><id>tag:katsuya0719.github.io,2017-01-30:/DjangoEP/17013011.html</id><summary type="html">&lt;p&gt;This page summarizes the future implementation plan for EP postprocessing tool&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Combine with machine learning?&lt;/h2&gt;
+&lt;h2&gt;What you can do?&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;python
+ print "Hello World!!"&lt;/code&gt;&lt;/p&gt;</content><category term="feature"></category></entry><entry><title>What you can do by EP postprocessing tool</title><link href="https://katsuya0719.github.io/DjangoEP/17013010.html" rel="alternate"></link><published>2017-01-30T10:00:00+08:00</published><updated>2017-01-30T10:00:00+08:00</updated><author><name>obakatsu</name></author><id>tag:katsuya0719.github.io,2017-01-30:/DjangoEP/17013010.html</id><summary type="html">&lt;p&gt;This page summarizes the features of EP postprocessing tool&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Why you need this tool?&lt;/h2&gt;
+&lt;h2&gt;What you can do (function)?&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;python
+ print "Hello World!!"&lt;/code&gt;&lt;/p&gt;</content><category term="feature"></category></entry><entry><title>How to use EP postprocessing tool</title><link href="https://katsuya0719.github.io/DjangoEP/first-post.html" rel="alternate"></link><published>2017-01-29T22:00:00+08:00</published><updated>2017-01-29T22:00:00+08:00</updated><author><name>obakatsu</name></author><id>tag:katsuya0719.github.io,2017-01-29:/DjangoEP/first-post.html</id><summary type="html">&lt;p&gt;This page is showing how to use EPpostprocessing&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Step1. Set idf file before running simulation&lt;/h2&gt;
+&lt;p&gt;Once you set all the setting for energy simulation, set following setting to the idf file.
+    1. In Output:Table:SummaryReports chapter, set Report 1 Name to AllSummary
+    ({filename}/images/instruction1.png)
+    2. In OutputControl:Table:Style chapter, set Column Separator to CommaAndHTML and Unit Conversion to JtoKWH
+    ({filename}/images/instruction2.png)&lt;/p&gt;
+&lt;h2&gt;Step2. Run the simulation&lt;/h2&gt;
+&lt;h2&gt;Step3. Upload the simulation result&lt;/h2&gt;
+&lt;p&gt;Once you finished the simulation, go to the upload page[link] and input all the information and upload html file from the simulation result.
+({filename}/images/instruction3.png)&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;/li&gt;
 &lt;/ul&gt;
