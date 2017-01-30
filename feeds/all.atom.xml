@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>help</title><link href="https://katsuya0719.github.io/DjangoEP/" rel="alternate"></link><link href="https://katsuya0719.github.io/DjangoEP/feeds/all.atom.xml" rel="self"></link><id>https://katsuya0719.github.io/DjangoEP/</id><updated>2014-01-04T22:00:00+08:00</updated><entry><title>Pelican</title><link href="https://katsuya0719.github.io/DjangoEP/first-post.html" rel="alternate"></link><published>2014-01-04T22:00:00+08:00</published><updated>2014-01-04T22:00:00+08:00</updated><author><name>obakatsu</name></author><id>tag:katsuya0719.github.io,2014-01-04:/DjangoEP/first-post.html</id><summary type="html">&lt;p&gt;summary&lt;/p&gt;</summary><content type="html">&lt;h1&gt;title&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Help page</title><link href="https://katsuya0719.github.io/DjangoEP/" rel="alternate"></link><link href="https://katsuya0719.github.io/DjangoEP/feeds/all.atom.xml" rel="self"></link><id>https://katsuya0719.github.io/DjangoEP/</id><updated>2014-01-04T22:00:00+08:00</updated><entry><title>How to use EP postprocessing tool</title><link href="https://katsuya0719.github.io/DjangoEP/first-post.html" rel="alternate"></link><published>2014-01-04T22:00:00+08:00</published><updated>2014-01-04T22:00:00+08:00</updated><author><name>obakatsu</name></author><id>tag:katsuya0719.github.io,2014-01-04:/DjangoEP/first-post.html</id><summary type="html">&lt;p&gt;This page is showing how to use EPpostprocessing&lt;/p&gt;</summary><content type="html">&lt;h1&gt;How to use EP postprocessing&lt;/h1&gt;
 &lt;ul&gt;
-&lt;li&gt;SyntaxHighlit&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;code&gt;python
- print "Hello World!!"&lt;/code&gt;&lt;/p&gt;</content><category term="pelican"></category><category term="python"></category></entry></feed>
+ print "Hello World!!"&lt;/code&gt;&lt;/p&gt;</content><category term="help"></category></entry></feed>
