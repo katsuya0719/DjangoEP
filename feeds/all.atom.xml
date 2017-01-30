@@ -12,12 +12,12 @@
 &lt;/ul&gt;
 &lt;p&gt;&lt;code&gt;python
  print "Hello World!!"&lt;/code&gt;&lt;/p&gt;</content><category term="feature"></category></entry><entry><title>How to use EP postprocessing tool</title><link href="https://katsuya0719.github.io/DjangoEP/first-post.html" rel="alternate"></link><published>2017-01-29T22:00:00+08:00</published><updated>2017-01-29T22:00:00+08:00</updated><author><name>obakatsu</name></author><id>tag:katsuya0719.github.io,2017-01-29:/DjangoEP/first-post.html</id><summary type="html">&lt;p&gt;This page is showing how to use EPpostprocessing&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Step1. Set idf file before running simulation&lt;/h2&gt;
-&lt;p&gt;Once you set all the setting for energy simulation, set following setting to the idf file.&lt;br&gt;
-    1. In Output:Table:SummaryReports chapter, set Report 1 Name to AllSummary&lt;br&gt;
-&lt;img alt="images/instruction1.png" src="https://katsuya0719.github.io/DjangoEP/images/instruction1.png"&gt;&lt;br&gt;
-    2. In OutputControl:Table:Style chapter, set Column Separator to CommaAndHTML and Unit Conversion to JtoKWH&lt;br&gt;
-&lt;img alt="images/instruction2.png" src="https://katsuya0719.github.io/DjangoEP/images/instruction2.png"&gt;  &lt;/p&gt;
+&lt;p&gt;Once you set all the setting for energy simulation, set following setting to the idf file. &lt;br&gt;
+    1. In Output:Table:SummaryReports chapter, set Report 1 Name to AllSummary &lt;br&gt;
+&lt;img alt="images/instruction1.png" src="https://katsuya0719.github.io/DjangoEP/images/instruction1.png" title="=400*"&gt; &lt;br&gt;
+    2. In OutputControl:Table:Style chapter, set Column Separator to CommaAndHTML and Unit Conversion to JtoKWH &lt;br&gt;
+&lt;img alt="images/instruction2.png" src="https://katsuya0719.github.io/DjangoEP/images/instruction2.png" title="=400*"&gt;   &lt;/p&gt;
 &lt;h2&gt;Step2. Run the simulation&lt;/h2&gt;
 &lt;h2&gt;Step3. Upload the simulation result&lt;/h2&gt;
 &lt;p&gt;Once you finished the simulation, go to the upload page[link] and input all the information and upload html file from the simulation result.
-&lt;img alt="images/instruction3.png" src="https://katsuya0719.github.io/DjangoEP/images/instruction3.png"&gt;&lt;/p&gt;</content><category term="help"></category></entry></feed>
+&lt;img alt="images/instruction3.png" src="https://katsuya0719.github.io/DjangoEP/images/instruction3.png" title="=400*"&gt;&lt;/p&gt;</content><category term="help"></category></entry></feed>
