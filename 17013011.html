@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Help page</title>
+    <title>Future plan of EP postprocessing tool as of 2017</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="katsuya0719">
@@ -64,7 +64,7 @@
           <div class="nav-collapse">
             <ul class="nav">
                           <li class="divider-vertical"></li>
-                  <li >
+                  <li class="active">
                     <a href="https://katsuya0719.github.io/DjangoEP/category/eppostprocessing.html">
 						<i class="icon-folder-open icon-large"></i>EPpostprocessing
 					</a>
@@ -84,9 +84,20 @@
     <div class="container-fluid">
       <div class="row">
         <div class="span9" id="content">
-        <div class="article">
-                <h1><a href="https://katsuya0719.github.io/DjangoEP/17013011.html">Future plan of EP postprocessing tool as of 2017</a></h1>
-                <div class="well small"><footer class="post-info">
+<section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to Future plan of EP postprocessing tool as of 2017">
+                                        Future plan of EP postprocessing tool as of 2017
+                                </a>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
 <span class="label">Date</span>
 <abbr class="published" title="2017-01-30T11:00:00+08:00">
         <i class="icon-calendar"></i>月 30 1月 2017
@@ -99,55 +110,21 @@
 
 <span class="label">Tags</span>
 	<a href="https://katsuya0719.github.io/DjangoEP/tag/feature.html"><i class="icon-tag"></i>feature</a>
-</footer><!-- /.post-info --></div>
-                <div class="summary"><p>This page summarizes the future implementation plan for EP postprocessing tool</p>
-                        <a class="btn primary xsmall" href="https://katsuya0719.github.io/DjangoEP/17013011.html">more ...</a>
-                </div>
-        </div>
-        <hr />
-        <div class="article">
-                <h1><a href="https://katsuya0719.github.io/DjangoEP/17013010.html">What you can do by EP postprocessing tool</a></h1>
-                <div class="well small"><footer class="post-info">
-<span class="label">Date</span>
-<abbr class="published" title="2017-01-30T10:00:00+08:00">
-        <i class="icon-calendar"></i>月 30 1月 2017
-</abbr>
-<span class="label">By</span>
-<a href="https://katsuya0719.github.io/DjangoEP/author/obakatsu.html"><i class="icon-user"></i>obakatsu</a>
-<span class="label">Category</span>
-<a href="https://katsuya0719.github.io/DjangoEP/category/eppostprocessing.html"><i class="icon-folder-open"></i>EPpostprocessing</a>.
-
-
-<span class="label">Tags</span>
-	<a href="https://katsuya0719.github.io/DjangoEP/tag/feature.html"><i class="icon-tag"></i>feature</a>
-</footer><!-- /.post-info --></div>
-                <div class="summary"><p>This page summarizes the features of EP postprocessing tool</p>
-                        <a class="btn primary xsmall" href="https://katsuya0719.github.io/DjangoEP/17013010.html">more ...</a>
-                </div>
-        </div>
-        <hr />
-        <div class="article">
-                <h1><a href="https://katsuya0719.github.io/DjangoEP/first-post.html">How to use EP postprocessing tool</a></h1>
-                <div class="well small"><footer class="post-info">
-<span class="label">Date</span>
-<abbr class="published" title="2017-01-29T22:00:00+08:00">
-        <i class="icon-calendar"></i>日 29 1月 2017
-</abbr>
-<span class="label">By</span>
-<a href="https://katsuya0719.github.io/DjangoEP/author/obakatsu.html"><i class="icon-user"></i>obakatsu</a>
-<span class="label">Category</span>
-<a href="https://katsuya0719.github.io/DjangoEP/category/eppostprocessing.html"><i class="icon-folder-open"></i>EPpostprocessing</a>.
-
-
-<span class="label">Tags</span>
-	<a href="https://katsuya0719.github.io/DjangoEP/tag/help.html"><i class="icon-tag"></i>help</a>
-</footer><!-- /.post-info --></div>
-                <div class="summary"><p>This page is showing how to use EPpostprocessing</p>
-                        <a class="btn primary xsmall" href="https://katsuya0719.github.io/DjangoEP/first-post.html">more ...</a>
-                </div>
-        </div>
-        <hr />
-
+</footer><!-- /.post-info -->                </div>
+                <h2>Compatible for IES &amp; eQuest result file</h2>
+<p>Now this application can only accept energyplus html result file. However, other software such as IES &amp; eQuest is being used in Arup. Hence, I am investigating how to make this application compatible for IES &amp; eQuest result file.  </p>
+<h2>Extend user interface</h2>
+<h3>Correlate with 3d model using three.js</h3>
+<p>Correlating simulation result with 3d model can tell the stakeholder much more. Some software have been trying to map simulation result to 3d model as following. However, I could not find the function which I want to use. </p>
+<h3>Connect with external application such as excel,Jyupiter notebook</h3>
+<p>This tool can automate data extraction and visualize basic information from the energy simulation result. But some user may have idea to visualize the data in different way. In that case, user can download the data and investigate further.  </p>
+<h2>Automated reporting</h2>
+<p>Energy modelling is required for green certificate such as LEED,BREEAM etc. Usually, we need to extract many parameters and fill in report to proove that energy model is reflecting the actual design and baseline case. This tool can extract all the required information for the report and help modeller to save the time.</p>
+<h2>Dashboard to show our energy simulation experience</h2>
+<p>We have been doing many energy simulation and that can be used for effective presentation to show our capability. The good point of this tool is that database and representation is independent. So once we create some representation using JavaScript, that representation can be applied to all the data which is stored in database already.</p>
+                </div><!-- /.entry-content -->
+        </article>
+</section>
         </div><!--/span-->
 
                 <div class="span3 well sidebar-nav" id="sidebar">
